@@ -1,4 +1,6 @@
-import { useRecoilValue } from 'recoil'
+import { requiresAuth } from "../hoc/requiresauth"
+
+export const getServerSideProps = requiresAuth(true, '/')
 
 function Company() {
     return (

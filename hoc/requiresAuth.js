@@ -1,17 +1,22 @@
 import { getSession } from "next-auth/react"
 
-export function requiresAuth(gssp) {
-    return async (ctx) => {
+export const requiresAuth = (
+    sessionCondition = true,
+    redirect = '/'
+) => {
+    return async function (ctx) {
         const session = await getSession(ctx);
 
         if (!session) {
             return {
                 redirect: {
+                    destination: redirect,
                     permanent: false,
-                    destination: "/"
                 }
             }
         }
-        return await gssp(ctx);
+        return {
+            props: {}
+        }
     }
 }
