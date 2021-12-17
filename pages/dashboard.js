@@ -1,4 +1,6 @@
-function Dashboard() {
+import { requiresAuth } from "../hoc/requiresauth"
+
+export default function Dashboard() {
     return (
         <div>
             This is home page
@@ -6,4 +8,9 @@ function Dashboard() {
     )
 }
 
-export default Dashboard
+// Needs better logic here
+export const getServerSideProps = requiresAuth(async (ctx) => {
+    return {
+        props: {}
+    }
+})
