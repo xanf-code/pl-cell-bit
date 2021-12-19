@@ -14,7 +14,7 @@ function Sidebar() {
     }
 
     return (
-        <div className={`w-[60%] md:w-[20%] overflow-hidden bg-white shadow-xl text-gray-500 overflow-y-scroll scrollbar-hide fixed inset-y-0 left-0 transform ${!isSidebarOpen && '-translate-x-full'} transition duration-200 ease-in-out`}>
+        <div className={`w-[70%] md:w-[20%] overflow-hidden bg-white shadow-xl text-gray-500 overflow-y-scroll scrollbar-hide fixed inset-y-0 left-0 transform ${!isSidebarOpen && '-translate-x-full'} transition duration-200 ease-in-out`}>
             <div className='flex justify-between px-4 pt-6'>
                 <XIcon onClick={() => setisSidebarOpen(false)} className='text-black h-7 w-7 cursor-pointer' />
                 <div className='flex'>
