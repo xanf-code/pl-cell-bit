@@ -1,24 +1,19 @@
-import { requiresAuth } from "../hoc/requiresauth"
+//import { requiresAuth } from "../hoc/requiresauth"
 import { getSession } from "next-auth/react"
 import { useForm } from 'react-hook-form';
-import { useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { updateUsers } from "../network/lib/users";
 
 export default function Onboarding({ userdata }) {
-    const [form, setForm] = useState();
-    const router = useRouter();
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
     const onSubmit = (data) => {
-        setForm({
-            user_meta: data
-        });
-        //Route when process complete
-        router.replace('/dashboard');
+        updateUsers(data.Department, data.Semester, data.USN, data.CGPA, userdata.user.uid).then(() => {
+            window.location.replace('/dashboard');
+        })
     };
 
     return (
