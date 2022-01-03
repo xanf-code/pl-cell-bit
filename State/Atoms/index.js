@@ -9,3 +9,8 @@ export const sidebarMenu = atom({
     key: "sidebarMenuAtom",
     default: false,
 });
+
+export const adminStatusModal = atom({
+    key: "statusModalAtom",
+    default: false,
+});

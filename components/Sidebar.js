@@ -1,4 +1,4 @@
-import { HomeIcon, BellIcon, CashIcon, PencilAltIcon, OfficeBuildingIcon, XIcon } from '@heroicons/react/outline'
+import { HomeIcon, BellIcon, CashIcon, PencilAltIcon, CalendarIcon, XIcon } from '@heroicons/react/outline'
 import Link from 'next/link';
 import { useRecoilState } from 'recoil'
 import { sidebarMenu } from '../State/Atoms'
@@ -33,17 +33,17 @@ function Sidebar() {
                 </Link>
                 <Link href='/company'>
                     <button onClick={() => handleSidebar()} className='flex items-center space-x-3'>
-                        <OfficeBuildingIcon className='h-5 w-5 text-black' />
-                        <p className='text-black font-semibold hover:text-gray-500'>Company</p>
+                        <CalendarIcon className='h-5 w-5 text-black' />
+                        <p className='text-black font-semibold hover:text-gray-500'>CR Dates</p>
                     </button>
                 </Link>
                 <button onClick={() => handleSidebar()} className='flex items-center space-x-3'>
-                    <CashIcon className='h-5 w-5 text-black' />
-                    <p className='text-black font-semibold hover:text-gray-500'>Offers</p>
+                    <BellIcon className='h-5 w-5 text-black' />
+                    <p className='text-black font-semibold hover:text-gray-500'>Announcements</p>
                 </button>
                 <button onClick={() => handleSidebar()} className='flex items-center space-x-3'>
-                    <BellIcon className='h-5 w-5 text-black' />
-                    <p className='text-black font-semibold hover:text-gray-500'>Notification</p>
+                    <CashIcon className='h-5 w-5 text-black' />
+                    <p className='text-black font-semibold hover:text-gray-500'>Offers</p>
                 </button>
                 <button onClick={() => handleSidebar()} className='flex items-center space-x-3' >
                     <PencilAltIcon className='h-5 w-5 text-black' />

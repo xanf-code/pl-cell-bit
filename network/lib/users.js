@@ -8,7 +8,11 @@ export function updateUsers(department, semester, USN, CGPA, uid) {
             department: department,
             semester: semester,
             USN: USN,
-            CGPA: CGPA
+            CGPA: CGPA,
+        },
+        offer_info: {
+            hasMultipleOffers: false,
+            isException: false,
         }
     });
 }
