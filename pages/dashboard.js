@@ -6,21 +6,28 @@ import CompanyCard from "../components/CompanyCard";
 import { useRecoilValue } from "recoil";
 import { adminStatusModal } from "../State/Atoms";
 import StatusModal from "../components/Admin/StatusModal";
-
+import { useState, useEffect } from "react";
+import { getCompany } from "../network/lib/companies";
 //export const getServerSideProps = requiresAuth(true, '/')
 
 export default function Dashboard() {
     //const { data: session } = useSession()
+
     const modal = useRecoilValue(adminStatusModal)
-    const test = [];
-    for (let i = 1; i <= 24; i++) {
-        test.push(<CompanyCard />);
-    }
+    const [companies, setCompanies] = useState([]);
+
+    useEffect(async () => {
+        const companydata = await getCompany();
+        setCompanies(companydata.data);
+    }, [companies])
+
     return (
         <div className="flex min-h-screen">
             <div className="w-full md:h-screen md:overflow-y-auto md:scrollbar-hide pl-2 md:pl-4 pr-2">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 last:pb-4">
-                    {test}
+                    {companies.map((company, index) => (
+                        <CompanyCard key={index} company={company} />
+                    ))}
                 </div>
             </div>
             <div className="w-[30%] overscroll-y-none hidden md:flex md:flex-col">
@@ -37,7 +44,7 @@ export async function getServerSideProps(context) {
         return {
             redirect: {
                 destination: '/onboarding',
-                permanent: true
+                permanent: false
             }
         }
     }

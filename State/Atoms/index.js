@@ -12,5 +12,15 @@ export const sidebarMenu = atom({
 
 export const adminStatusModal = atom({
     key: "statusModalAtom",
-    default: false,
+    default: true,
 });
+
+export const getStatusAtom = atom({
+    key: "getStatusAtom",
+    default: [],
+})
+
+export const getUserAtom = atom({
+    key: "getUserAtom",
+    default: {},
+})

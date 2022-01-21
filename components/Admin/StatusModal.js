@@ -1,6 +1,7 @@
 import { useRecoilState } from "recoil"
 import { adminStatusModal } from "../../State/Atoms"
 import { useForm } from 'react-hook-form';
+import { addStatus, getStatus } from "../../network/lib/status";
 
 function StatusModal() {
     const [statusModal, setStatusModal] = useRecoilState(adminStatusModal)
@@ -11,8 +12,9 @@ function StatusModal() {
         formState: { errors },
     } = useForm();
     const onSubmit = (data) => {
-        console.log(data);
-        setStatusModal(!statusModal)
+        addStatus(data.Company, data.Status).then(() => {
+            setStatusModal(!statusModal)
+        })
     };
 
     return (
