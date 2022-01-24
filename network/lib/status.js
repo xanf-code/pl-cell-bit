@@ -10,3 +10,7 @@ export function addStatus(company, status) {
         status: status
     });
 }
+
+export function deleteStatus(sid) {
+    return client.delete(`/status/${sid}`);
+}
