@@ -1,7 +1,7 @@
 import { useRecoilState } from "recoil"
 import { adminStatusModal } from "../../State/Atoms"
 import { useForm } from 'react-hook-form';
-import { addStatus, getStatus } from "../../network/lib/status";
+import { addStatus } from "../../network/lib/status";
 
 function StatusModal() {
     const [statusModal, setStatusModal] = useRecoilState(adminStatusModal)

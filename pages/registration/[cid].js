@@ -1,24 +1,18 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
-import { useRecoilValueLoadable } from "recoil";
+import { useRecoilState, useRecoilValueLoadable } from "recoil";
 import { getCompany } from "../../network/lib/companies";
 import { registerUser } from "../../network/lib/register";
+import { getCompanyAtom } from "../../State/Atoms";
 import { getUserSelector } from "../../State/Selectors/user";
 
 export default function CompanyRegistration() {
     const { data: session } = useSession()
-    const [eligibility, setEligibility] = useState("");
-    const [companyID, setCompanyID] = useState("");
     const router = useRouter();
     const user = useRecoilValueLoadable(getUserSelector(session && session.user.uid))
 
-    useEffect(async () => {
-        const companydata = await getCompany();
-        setCompanyID(companydata.data[0]._id);
-        setEligibility(companydata.data[0].eligibility.academics);
-    }, [])
+    const { cid } = router.query;
 
     const {
         register,
@@ -26,7 +20,7 @@ export default function CompanyRegistration() {
         formState: { errors },
     } = useForm();
     const onSubmit = async (data) => {
-        registerUser(companyID, session && session.user.uid, data.Backlogs, data.CGPA, data.Degree, data.Department, data.Email, data.Name, data.Phone, data.USN, data.XIIth, data.Xth).then(() => {
+        registerUser(cid, session && session.user.uid, data.Backlogs, data.CGPA, data.Degree, data.Department, data.Email, data.Name, data.Phone, data.USN, data.XIIth, data.Xth).then(() => {
             router.replace("/dashboard");
         });
     };
@@ -69,10 +63,7 @@ export default function CompanyRegistration() {
                         <option value="ISE">ISE</option>
                     </select>
                 </div>
-                <div>
-                    <h1 className="font-medium pl-4 pt-4 text-gray-700">⚠️ {eligibility}</h1>
-                </div>
-                <div className="flex justify-between pt-1">
+                <div className="flex justify-between pt-4">
                     <div className="flex flex-col flex-1">
                         <label className="font-semibold text-gray-500 pl-4 pb-2">* 10th % or CGPA :</label>
                         <input className="bg-gray-100 font-bold appearance-none border-2 border-gray-200 rounded mx-4 py-2 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-purple-500" {...register('Xth', { required: true })} />

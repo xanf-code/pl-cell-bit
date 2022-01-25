@@ -1,7 +1,7 @@
 import { useSession } from "next-auth/react"
 import { useRecoilState, useRecoilValueLoadable } from "recoil"
-import { deleteStatus, getStatus } from "../network/lib/status"
-import { adminStatusModal, getStatusAtom } from "../State/Atoms"
+import { deleteStatus } from "../network/lib/status"
+import { adminStatusModal } from "../State/Atoms"
 import { statusSelector } from "../State/Selectors/status"
 import { getUserSelector } from "../State/Selectors/user";
 
@@ -32,7 +32,7 @@ function StatusBoard() {
             <div className="px-4 grid grid-cols-3 gap-3 pt-4">
                 {statusData.state === "hasValue" && statusData.contents.map((status) => {
                     return (
-                        <h1 onClick={() => adminDeleteStatus(status._id)} className="cursor-pointer text-white font-semibold">{status.status} {status.company}</h1>
+                        <h1 key={status._id} onClick={() => adminDeleteStatus(status._id)} className="cursor-pointer text-white font-semibold">{status.status} {status.company}</h1>
                     )
                 })}
             </div>

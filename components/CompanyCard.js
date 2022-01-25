@@ -1,16 +1,19 @@
 import { useSession } from "next-auth/react"
 import Link from "next/link"
 import ReactTimeago from "react-timeago"
-import { useRecoilValueLoadable } from "recoil"
-import { deleteCompany } from "../network/lib/companies"
+import { useRecoilState, useRecoilValueLoadable } from "recoil"
+import { deleteCompany, getCompany } from "../network/lib/companies"
+import { getCompanyAtom } from "../State/Atoms"
 import { getUserSelector } from "../State/Selectors/user"
 
 function CompanyCard({ company }) {
     const { data: session } = useSession()
     const user = useRecoilValueLoadable(getUserSelector(session && session.user.uid))
+    const [listData, setListdata] = useRecoilState(getCompanyAtom);
 
     async function removeCompany(cid) {
-        await deleteCompany(cid);
+        const deleted = await deleteCompany(cid);
+        setListdata(listData.filter(company => company._id !== deleted._id));
     }
 
     return (

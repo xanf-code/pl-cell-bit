@@ -24,3 +24,14 @@ export const getUserAtom = atom({
     key: "getUserAtom",
     default: {},
 })
+
+export const getCompanyAtom = atom({
+    key: "getCompanyAtom",
+    default: [],
+    dangerouslyAllowMutability: true,
+})
+
+export const filterCompanyAtom = atom({
+    key: "filterCompanyAtom",
+    default: "All",
+})

@@ -3,7 +3,6 @@ import { useRecoilState } from 'recoil'
 import { sidebarMenu } from '../State/Atoms';
 import Sidebar from '../components/Sidebar'
 import { useEffect, useState } from 'react';
-import { useSession } from "next-auth/react"
 
 function Layout({ children }) {
     const [isSidebarOpen, setisSidebarOpen] = useRecoilState(sidebarMenu);
