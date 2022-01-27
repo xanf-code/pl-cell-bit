@@ -33,5 +33,5 @@ export const getCompanyAtom = atom({
 
 export const filterCompanyAtom = atom({
     key: "filterCompanyAtom",
-    default: "All",
+    default: [],
 })

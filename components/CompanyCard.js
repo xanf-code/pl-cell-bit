@@ -68,7 +68,10 @@ function CompanyCard({ company }) {
                     <div onClick={() => removeCompany(company._id)} className="bg-red-100 hover:bg-red-200 p-1 rounded-xl cursor-pointer transtition duration-300 ease-in-out">
                         <h3 className="text-white font-normal text-xs mx-2 ">🗑 <span className="text-black font-semibold">Delete</span></h3>
                     </div>
-                    <h1 className="text-sm font-semibold text-gray-500">📈 {company.registers.length} Applied</h1>
+                    <Link href={`admin/${company.companyName}/${company._id}`}>
+                        <h1 className="text-sm font-semibold text-gray-500 hover:underline underline-offset-4 cursor-pointer
+                        ">📈 {company.registers.length} Applied</h1>
+                    </Link>
                 </div>}
         </div>
     )

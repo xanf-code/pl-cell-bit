@@ -26,3 +26,7 @@ export function addCompany(company) {
         }
     });
 }
+
+export function getSingleCompany(cid) {
+    return client.get(`/get/company/${cid}`);
+}

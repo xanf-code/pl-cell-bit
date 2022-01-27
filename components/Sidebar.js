@@ -14,7 +14,7 @@ function Sidebar() {
     }
 
     return (
-        <div className={`w-[70%] md:w-[20%] overflow-hidden bg-white shadow-xl text-gray-500 overflow-y-scroll scrollbar-hide fixed inset-y-0 left-0 transform ${!isSidebarOpen && '-translate-x-full'} transition duration-200 ease-in-out`}>
+        <div className={`w-[70%] md:w-[20%] overflow-hidden bg-white shadow-xl text-gray-500 overflow-y-scroll scrollbar-hide fixed inset-y-0 left-0 transform ${!isSidebarOpen && '-translate-x-full'} transition duration-200 ease-in-out z-10`}>
             <div className='flex justify-between px-4 pt-6'>
                 <XIcon onClick={() => setisSidebarOpen(false)} className='text-black h-7 w-7 cursor-pointer' />
                 <div className='flex'>
@@ -31,7 +31,7 @@ function Sidebar() {
                         <p className='text-black font-semibold hover:text-gray-500'>Home</p>
                     </button>
                 </Link>
-                <Link href='/company'>
+                <Link href='/CRDates'>
                     <button onClick={() => handleSidebar()} className='flex items-center space-x-3'>
                         <CalendarIcon className='h-5 w-5 text-black' />
                         <p className='text-black font-semibold hover:text-gray-500'>CR Dates</p>
@@ -41,10 +41,12 @@ function Sidebar() {
                     <BellIcon className='h-5 w-5 text-black' />
                     <p className='text-black font-semibold hover:text-gray-500'>Announcements</p>
                 </button>
-                <button onClick={() => handleSidebar()} className='flex items-center space-x-3'>
-                    <CashIcon className='h-5 w-5 text-black' />
-                    <p className='text-black font-semibold hover:text-gray-500'>Offers</p>
-                </button>
+                <Link href='/applied'>
+                    <button onClick={() => handleSidebar()} className='flex items-center space-x-3'>
+                        <CashIcon className='h-5 w-5 text-black' />
+                        <p className='text-black font-semibold hover:text-gray-500'>Applied</p>
+                    </button>
+                </Link>
                 <button onClick={() => handleSidebar()} className='flex items-center space-x-3' >
                     <PencilAltIcon className='h-5 w-5 text-black' />
                     <p className='text-black font-semibold hover:text-gray-500'>Edit Details</p>

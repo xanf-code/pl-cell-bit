@@ -23,8 +23,6 @@ export default function Dashboard() {
 
     const companyData = useRecoilValueLoadable(companySelector);
 
-    const [filterComp, setFilterComp] = useRecoilState(filterCompanyAtom);
-
     const [userAtom, setUserAt] = useRecoilState(getUserAtom);
 
     setUserAt(session && session);
