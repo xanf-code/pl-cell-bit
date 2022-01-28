@@ -4,7 +4,7 @@ import AnnounceBoard from "../components/AnnounceBoard";
 import StatusBoard from "../components/StatusBoard";
 import CompanyCard from "../components/CompanyCard";
 import { useRecoilState, useRecoilValue, useRecoilValueLoadable } from "recoil";
-import { adminStatusModal, filterCompanyAtom, getUserAtom } from "../State/Atoms";
+import { adminStatusModal, getUserAtom } from "../State/Atoms";
 import StatusModal from "../components/Admin/StatusModal";
 import { useState } from "react";
 import { getUserSelector } from "../State/Selectors/user";

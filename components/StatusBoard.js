@@ -32,7 +32,7 @@ function StatusBoard() {
             <div className="px-4 grid grid-cols-3 gap-3 pt-4">
                 {statusData.state === "hasValue" && statusData.contents.map((status) => {
                     return (
-                        <h1 key={status._id} onClick={() => adminDeleteStatus(status._id)} className="cursor-pointer text-white font-semibold">{status.status} {status.company}</h1>
+                        <h1 key={status._id} onClick={() => adminDeleteStatus(status._id)} className={`${user.contents.isAdmin && 'cursor-pointer hover:underline underline-offset-4'} text-white font-semibold`}>{status.status} {status.company}</h1>
                     )
                 })}
             </div>
